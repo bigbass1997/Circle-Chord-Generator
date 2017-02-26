@@ -39,8 +39,7 @@ public class PanelPrimary extends Panel {
 		sr.setAutoShapeType(true);
 		sr.setProjectionMatrix(cam.combined);
 		
-		circ = new CircleGen(cam.viewportWidth / 2, cam.viewportHeight / 2, Math.min(cam.viewportWidth, cam.viewportHeight) / 2);
-		//circ = new CircleGen(cam.viewportWidth / 2, cam.viewportHeight / 2, 250);
+		circ = new CircleGen(cam.viewportWidth / 2, cam.viewportHeight / 2, (Math.min(cam.viewportWidth, cam.viewportHeight) / 2) - 5);
 	}
 	
 	public void render() {

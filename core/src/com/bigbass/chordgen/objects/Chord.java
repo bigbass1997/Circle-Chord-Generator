@@ -32,4 +32,10 @@ public class Chord {
 	public void render(ShapeRenderer sr, float offX, float offY){
 		sr.rectLine(ep1.x + offX, ep1.y + offY, ep2.x + offX, ep2.y + offY, thickness, ep1.c, ep2.c);
 	}
+	
+	public void update(float delta){
+		if(thickness > 0){
+			thickness -= delta * 13f;
+		}
+	}
 }

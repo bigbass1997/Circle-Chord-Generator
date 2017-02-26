@@ -22,7 +22,7 @@ public class CircleGen {
 	private final int iters = 1;
 	private final int wait = 2;
 	
-	private final float thickness = 2;
+	private final float thickness = 15;
 	private final int maxChords = 100000;
 	
 	public CircleGen(float x, float y, float radius){
@@ -45,8 +45,14 @@ public class CircleGen {
 		}
 		
 		sr.set(ShapeType.Line);
-		sr.setColor(Color.WHITE);
-		sr.circle(x, y, radius);
+		for(int i = -1; i < 3; i++){
+			sr.setColor(Color.WHITE);
+			sr.circle(x, y, radius + i, 300);
+		}
+		for(int i = 3; i < 8; i++){
+			sr.setColor(Color.BLACK);
+			sr.circle(x, y, radius + i, 300);
+		}
 	}
 	
 	public void update(float delta){
@@ -78,6 +84,14 @@ public class CircleGen {
 				}
 			}
 			ticks = 0;
+		}
+		
+		for(int i = chords.size() - 1; i > 0; i--){
+			Chord chord = chords.get(i);
+			chord.update(delta);
+			if(chord.thickness < 0){
+				chords.remove(i);
+			}
 		}
 	}
 }
